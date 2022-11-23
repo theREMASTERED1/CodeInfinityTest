@@ -1,12 +1,14 @@
 
 <?php
-
+//defines number of users to generate
 $number = $_POST['number'];
+
 require_once 'vendor/autoload.php';
 $faker = Faker\Factory::create();
-
+//defines headers
 $headers = array("id", "Name", "Surname", "Intials", "Age", "DateOfBirth");
-$number = $_POST['number'];
+
+//defines names and surnames
 $name = array(
   'Peter',
   'Glenn',
@@ -61,14 +63,18 @@ $UserData = array();
 
 
 $n = 0;
+
+//creates users based on defined number
 while ($n < $number) {
   $n++;
+  //mixes arrays
   shuffle($name);
-
   shuffle($surname);
   ini_set('memory_limit', '-1');
 
   $id = $n;
+
+  //randomizes data as much as possible
   $firstname = $name[array_rand($name)];
   $firstname = $name[array_rand($name)];
   if ($firstname === $name[array_rand($name)] or $firstname === null) {
@@ -80,6 +86,7 @@ while ($n < $number) {
     $firstname = $surname[array_rand($surname)];
   };
 
+  //creates random birthday as well as calculating age
   $birthDay = $faker->dateTimeBetween('1975-01-01', '2004-12-31');
   $birthDayF = $birthDay->format('d/m/Y');
   $birthDayY = $birthDay->format("Y");
@@ -88,16 +95,16 @@ while ($n < $number) {
 
 
 
-
+  //gets user initials
   $words = explode(" ", $firstname);
   $initials = null;
   foreach ($words as $word) {
     $initials .= $word[0];
   }
-
+  //pushes data into array
   array_push($UserData, array("id" => $id, "name" => $firstname, "surname" => $surname1, "initials" => $initials, "age" => $age, "DateOfBirth" => $birthDayF));
 }
-
+//pushes data into the csv
 foreach ($UserData as $fields) {
   fputcsv($file, $fields, ",");
 }
