@@ -1,0 +1,31 @@
+/* <?php 
+header("Content-type: text/css")
+?> */
+
+body {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+button {
+  width: fit-content;
+  margin-top: 10px;
+}
+
+form {
+  background-color: slategrey;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  margin-top: 50px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+input {
+  text-transform: lowercase;
+}
