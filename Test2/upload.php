@@ -15,21 +15,21 @@ while (($cont = fgetcsv($handle, 10000000, ',')) !== false) {
     $table = "csv_import";
     if ($r == 0) {
 
-        $idS = $cont[0];
-        $nameS = $cont[1];
-        $surnameS = $cont[2];
-        $iniS = $cont[3];
-        $ageS = $cont[4];
-        $dobS = $cont[5];
+        $id = $cont[0];
+        $name = $cont[1];
+        $surname = $cont[2];
+        $ini = $cont[3];
+        $age = $cont[4];
+        $dob = $cont[5];
 
 
         //creates table
-        $query = "CREATE TABLE $table ($idS INT(255) PRIMARY KEY,$nameS VARCHAR(50),$surnameS VARCHAR(50),$iniS VARCHAR(50),$ageS INT(50),$dobS VARCHAR(50))";
+        $query = "CREATE TABLE $table ($id INT(255) PRIMARY KEY,$name VARCHAR(50),$surname VARCHAR(50),$ini VARCHAR(50),$age INT(50),$dob VARCHAR(50))";
 
         mysqli_query($sql, $query);
     } else {
         //inserts data into rows
-        $query = "INSERT INTO $table($idS,$nameS,$surnameS,$iniS,$ageS,$dobS) VALUES('$cont[0]','$cont[1]','$cont[2]','$cont[3]','$cont[4]','$cont[5]')";
+        $query = "INSERT INTO $table($id,$name,$surname,$ini,$age,$dob) VALUES('$cont[0]','$cont[1]','$cont[2]','$cont[3]','$cont[4]','$cont[5]')";
         //submits insert
         mysqli_query($sql, $query);
     }

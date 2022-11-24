@@ -37,6 +37,7 @@
         <input required type="date" id="birth" name="birth" value="<?php if (isset($_POST['birth'])) {
                                                                       echo htmlentities($_POST['birth']);
                                                                     } ?>" />
+        <!-- is to return previous value when data is incorrect -->
         <br /><br />
 
 
@@ -98,15 +99,17 @@
 
         //lets the user know they are already on the system
         echo ("Hi please login instead");
+        http_response_code(401);
       } else {
 
 
         //saves the user to the database
         if ($collection->insertOne($UserData)) {
 
-          echo "<h1>data is inserted</h1>";
+          echo "<h1>user uploaded</h1>";
         } else {
           echo "some Issue occured with the connection";
+          http_response_code(401);
         }
       }
     }

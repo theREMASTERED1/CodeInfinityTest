@@ -74,13 +74,12 @@ while ($n < $number) {
 
   $id = $n;
 
-  //randomizes data as much as possible
-  $firstname = $name[array_rand($name)];
+  //randomizes data as much as possible without chance of direct duplicates or empty values
   $firstname = $name[array_rand($name)];
   if ($firstname === $name[array_rand($name)] or $firstname === null) {
     $firstname = $name[array_rand($name)];
   };
-  $surname1 = $surname[array_rand($surname)];
+
   $surname1 = $surname[array_rand($surname)];
   if ($surname1 === $surname[array_rand($surname)] or $surname1 === null) {
     $firstname = $surname[array_rand($surname)];
